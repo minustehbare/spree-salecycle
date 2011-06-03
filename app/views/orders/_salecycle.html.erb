@@ -1,0 +1,22 @@
+<%= javascript_tag do %>
+  var __sc = new Array();
+  __sc["c"]   = ""; //mandatory client id (unique id as supplied by SaleCyle)
+  __sc["b"]   = ""; //mandatory session id
+  __sc["s"]   = ""; //mandatory cart status (1= basket, 2= checkout, 3= completed, 4= ignore)
+  __sc["n"]   = ""; //optional user name
+  __sc["e"]   = ""; //optional user email address
+  __sc["t"]   = ""; //optional user telephone no
+  __sc["o"]   = ""; //optional user opt out flag
+  __sc["p"]   = ""; //mandatory item id(s) (multiple separated with a pipe |)
+  __sc["i"]   = ""; //mandatory individual item name(s) (multiple separated with a pipe |)
+  __sc["v1"]  = ""; //mandatory individual item value(s) (multiple separated with a pipe |)
+  __sc["v2"]  = ""; //preferable total value (including potential discounts) NOT pipe separated
+  __sc["q1"]  = ""; //optional individual item quantity(s) (multiple separated with a pipe |)
+  __sc["u"]   = ""; //optional url path of item image (multiple separated with a pipe |)
+  __sc["cu1"] = ""; //option custom field #1 (multiple separated with a pipe |)
+  __sc["cu2"] = ""; //option custom field #2 (multiple separated with a pipe |)
+  __sc["w"]   = ""; //optional web page name (tracks page name user is currently on)
+  __sc["y"]   = ""; //optional Currency for this cart
+  __sc["uc"]  = ""; //optional User Cookie (allows the client to desactive cookie functionality)
+<% end %>
+<script type="text/javascript" src="https://app.salecycle.com/salecycle.js"></script>
