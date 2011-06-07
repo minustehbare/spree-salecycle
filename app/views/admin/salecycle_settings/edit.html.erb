@@ -1,0 +1,40 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t('edit_salecycle_settings') %></h1>
+
+<%= form_tag(admin_salecycle_settings_path, :method => :put) do %>
+  <p>
+    <label><%= t("client_id") %></label>
+    <%= text_field_tag('preferences[salecycle_client_id]', Spree::Config[:salecycle_client_id]) %>
+  </p>
+  <p>
+  <label><%= t("user_name_method") %></label>
+    <%= text_field_tag('preferences[salecycle_user_name_method]', Spree::Config[:salecycle_user_name_method]) %>
+  </p>
+  <p>
+    <label><%= t("user_phone_number_method") %></label>
+    <%= text_field_tag('preferences[salecycle_user_phone_number_method]', Spree::Config[:salecycle_user_phone_number_method]) %>
+  </p>
+  <p>
+    <label><%= t("user_opt_out_method") %></label>
+    <%= text_field_tag('preferences[salecycle_user_opt_out_method]', Spree::Config[:salecycle_user_opt_out_method]) %>
+  </p>
+  <p>
+    <label><%= t("currency_type") %></label>
+    <%= text_field_tag('preferences[salecycle_currency_type]', Spree::Config[:salecycle_currency_type]) %>
+  </p>
+  <h2>Custom fields</h2>
+  <p>
+    <label><%= t('custom_field_1_method') %></label>
+    <%= text_field_tag('preferences[salecycle_custom_field_1]', Spree::Config[:salecycle_custom_field_1]) %>
+  </p>
+  <p>
+    <label><%= t('custom_field_1_method') %></label>
+    <%= text_field_tag('preferences[salecycle_custom_field_2]', Spree::Config[:salecycle_custom_field_2]) %>
+  </p>
+
+  <p class="form-buttons">
+    <%= button t('update') %>
+    <%= t("or") %> <%= link_to t("cancel"), admin_salecycle_settings_url %>
+  </p>
+<% end %>

@@ -1,0 +1,45 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t("salecycle_settings") %></h1>
+
+<table>
+  <tr>
+    <th scope="row"><%= t("client_id") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_client_id] ? Spree::Config[:salecycle_client_id] : t('not_defined'))%></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("user_name_method") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_user_name_method] ? Spree::Config[:salecycle_user_name_method] : t('none'))%></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("user_phone_number_method") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_user_phone_number_method] ? Spree::Config[:salecycle_user_phone_number_method] : t('none'))%></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("user_opt_out_method") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_user_opt_out_method] ? Spree::Config[:salecycle_user_opt_out_method] : t('none'))%></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("currency_type") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_currency_type] ? Spree::Config[:salecycle_currency_type] : t('none'))%></td>
+  </tr>
+</table>
+<h2>Custom fields</h2>
+Define how to fill in Salecycle's custom variables for additional tracking.
+<table>
+  <tr>
+    <th scope="row"><%= t("custom_field_1") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_custom_field_1] ? Spree::Config[:salecycle_custom_field_1] : t('none'))%></td>
+  </tr>
+    <tr>
+    <th scope="row"><%= t("custom_field_2") %>:</th>
+    <td><%=  (Spree::Config[:salecycle_custom_field_1] ? Spree::Config[:salecycle_custom_field_2] : t('none'))%></td>
+  </tr>
+</table>
+<p><%= link_to_with_icon 'edit', t("edit"), edit_admin_salecycle_settings_path, :id => 'admin_general_settings_link' %></p>
+
+
+
+
+__sc["v2"] = ""; //preferable total value (including potential discounts) NOT pipe separated
+__sc["uc"] = ""; //optional User Cookie (allows the client to desactive cookie functionality
