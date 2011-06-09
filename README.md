@@ -14,7 +14,7 @@ Use `insert_after :checkout_summary_box` to hook into the order summary window t
 Confirmed Payment
 =================
 
-User `insert_after :order_details` to hook into the summary of the order once payment has been confirmed.  Hook located in **/core/app/views/shared/_order_details.html.erb.
+User `insert_after :order_details_total` to hook into the summary of the order once payment has been confirmed.  Hook located in **/core/app/views/orders/show.html.erb.
 
 Example
 =======

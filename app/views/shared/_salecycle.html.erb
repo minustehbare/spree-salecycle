@@ -3,37 +3,25 @@
   __sc["c"]   = "<%= Spree::Config[:salecycle_client_id] %>";
   __sc["b"]   = "<%= @order.number %>";
   __sc["s"]   = "<%= case @order.state.to_sym
-                      when :cart
-                        1
-                      when :address
-                        2
-                      when :delivery
-                        2
-                      when :payment
-                        2
-                      when :confirm
-                        2
-                      when :complete
-                        3
-                      else
-                        4
-                      end %>";
-  __sc["n"]   = "<%= if current_user and Spree::Config[:salecycle_user_name_method]
-                     current_user.send Spree::Config[:salecycle_user_name_method].split('#')[1]
-                   else
-                     ''
-                   end -%>";
+                       when :cart
+                         1
+                       when :address
+                         2
+                       when :delivery
+                         2
+                       when :payment
+                         2
+                       when :confirm
+                         2
+                       when :complete
+                         3
+                       else
+                         4
+                     end -%>";
+  __sc["n"]   = "<%= @order.billing_firstname + '|' + @order.billing_lastname if @order.bill_address.firstname %>";
   __sc["e"]   = "<%= @order.email %>"; 
-  __sc["t"]   = "<%= if current_user and Spree::Config[:salecycle_user_phone_number_method]
-                     current_user.send Spree::Config[:salecycle_user_phone_number_method].split('#')[1]
-                   else
-                     ''
-                   end -%>";
-  __sc["o"]   = "<%= if current_user and Spree::Config[:salecycle_user_opt_out_method]
-                     current_user.send Spree::Config[:salecycle_user_opt_out_method].split('#')[1]
-                   else
-                     ''
-                   end -%>";
+  __sc["t"]   = "<%= @order.bill_address.phone if @order.bill_address -%>";
+  __sc["o"]   = "<%= current_user.send Spree::Config[:salecycle_user_opt_out_method].split('#')[1] if current_user and Spree::Config[:salecycle_user_opt_out_method] %>";
   __sc["p"]   = "<%= @order.line_items.map { |line_item| line_item.id }.join '|' %>";
   __sc["i"]   = "<%= @order.line_items.map { |line_item| line_item.variant.name }.join '|' %>";
   __sc["v1"]  = "<%= @order.line_items.map { |line_item| line_item.price }.join '|' %>";
@@ -46,28 +34,24 @@
                                                           line_item.product.images.first.attachment.url
                                                         end
                                           }.join '|' -%>";
-  __sc["cu1"] = "<%= receiver,method = if Spree::Config[:salecycle_custom_field_1]
-                                        Spree::Config[:salecycle_custom_field_1].match(/(.+)#(.+)/)[1..2]
-                                        if receiver.downcase == 'product'
-                                          @order.line_items.map { |line_item| line_item.product.send method }.join '|'
-                                        elsif receiver.downcast == 'variant'
-                                          @order.line_items.map { |line_item| line_item.variant.send method }.join '|'
-                                        end
-                                      else
-                                        ''
-                                      end -%>";
-  __sc["cu2"] = "<%= receiver,method = if Spree::Config[:salecycle_custom_field_2]
-                                        Spree::Config[:salecycle_custom_field_2].match(/(.+)#(.+)/)[1..2]
-                                        if receiver.downcase == 'product'
-                                          @order.line_items.map { |line_item| line_item.product.send method }.join '|'
-                                        elsif receiver.downcast == 'variant'
-                                          @order.line_items.map { |line_item| line_item.variant.send method }.join '|'
-                                        end 
-                                      else
-                                        ''
-                                      end -%>";
-  __sc["w"]   = "<%= request.url %>";
+  __sc["cu1"] = "<%= if Spree::Config[:salecycle_custom_field_1]
+                       receiver, method = Spree::Config[:salecycle_custom_field_1].match(/(.+)#(.+)/)[1..2]
+                       if receiver.downcase == 'product'
+                         @order.line_items.map { |line_item| line_item.product.send method }.join '|'
+                       elsif receiver.downcast == 'variant'
+                         @order.line_items.map { |line_item| line_item.variant.send method }.join '|'
+                       end
+                     end -%>";
+  __sc["cu2"] = "<%= if Spree::Config[:salecycle_custom_field_2]
+                       receiver, method = Spree::Config[:salecycle_custom_field_2].match(/(.+)#(.+)/)[1..2]
+                       if receiver.downcase == 'product'
+                         @order.line_items.map { |line_item| line_item.product.send method }.join '|'
+                       elsif receiver.downcast == 'variant'
+                         @order.line_items.map { |line_item| line_item.variant.send method }.join '|'
+                       end
+                     end -%>";
+  __sc["w"]   = "<%= @order.state %>";
   __sc["y"]   = "<%= Spree::Config[:salecycle_currency_type] %>";
   __sc["uc"]  = "0";
 <% end %>
-<script type="text/javascript" src="https://app.salecycle.com/salecycle.js"></script>
+<script type="text/javascript" src="<%= request.protocol %><%= Spree::Config[:salecycle_app_name] %>.salecycle.com/salecycle.js"></script>
