@@ -17,7 +17,7 @@ class SpreeSalecycleHooks < Spree::ThemeSupport::HookListener
                        :disabled => false)
   Deface::Override.new(:virtual_path => "admin/configurations/index",
                        :name => "salecycle_admin_configurations_menu",
-                       :insert_after => "[data-hook='admin_configurations_menu'], #admin_configurations_menu[data-hook]",
-                       :partial => "salecycle_settings",
+                       :insert_bottom => "[data-hook='admin_configurations_menu'], #admin_configurations_menu[data-hook]",
+                       :partial => "admin/configurations/salecycle_settings",
                        :disabled => false)
 end
