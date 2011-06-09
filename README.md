@@ -1,8 +1,6 @@
 SpreeSalecycle
 ==============
 
-__\*\*NOTE:__ 'SaleCycle' refers to the service, 'Salecycle' to the extension.  The distinction is subtle and not a typo.
-
 Salecycle provides a pre-configured implementation of the SaleCycle JavaScript complete with variable population and custom method definition for the easiest possible implementation of SaleCycle's services.
 
 ### SaleCycle ###
