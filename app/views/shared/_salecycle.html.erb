@@ -18,10 +18,10 @@
                        else
                          4
                      end -%>";
-  __sc["n"]   = "<%= @order.billing_firstname + '|' + @order.billing_lastname if @order.bill_address.firstname %>";
+  __sc["n"]   = "<%= @order.billing_firstname + '|' + @order.billing_lastname if @order.bill_address and @order.bill_address.firstname %>";
   __sc["e"]   = "<%= @order.email %>"; 
-  __sc["t"]   = "<%= @order.bill_address.phone if @order.bill_address -%>";
-  __sc["o"]   = "<%= current_user.send Spree::Config[:salecycle_user_opt_out_method].split('#')[1] if current_user and Spree::Config[:salecycle_user_opt_out_method] %>";
+  __sc["t"]   = "<%= @order.bill_address.phone if @order.bill_address %>";
+  __sc["o"]   = "<%= current_user.send Spree::Config[:salecycle_user_opt_out_method].split('#')[1] if current_user and Spree::Config[:salecycle_user_opt_out_method].present? %>";
   __sc["p"]   = "<%= @order.line_items.map { |line_item| line_item.id }.join '|' %>";
   __sc["i"]   = "<%= @order.line_items.map { |line_item| line_item.variant.name }.join '|' %>";
   __sc["v1"]  = "<%= @order.line_items.map { |line_item| line_item.price }.join '|' %>";
@@ -34,7 +34,7 @@
                                                           line_item.product.images.first.attachment.url
                                                         end
                                           }.join '|' -%>";
-  __sc["cu1"] = "<%= if Spree::Config[:salecycle_custom_field_1]
+  __sc["cu1"] = "<%= if Spree::Config[:salecycle_custom_field_1].present?
                        receiver, method = Spree::Config[:salecycle_custom_field_1].match(/(.+)#(.+)/)[1..2]
                        if receiver.downcase == 'product'
                          @order.line_items.map { |line_item| line_item.product.send method }.join '|'
@@ -42,7 +42,7 @@
                          @order.line_items.map { |line_item| line_item.variant.send method }.join '|'
                        end
                      end -%>";
-  __sc["cu2"] = "<%= if Spree::Config[:salecycle_custom_field_2]
+  __sc["cu2"] = "<%= if Spree::Config[:salecycle_custom_field_2].present?
                        receiver, method = Spree::Config[:salecycle_custom_field_2].match(/(.+)#(.+)/)[1..2]
                        if receiver.downcase == 'product'
                          @order.line_items.map { |line_item| line_item.product.send method }.join '|'

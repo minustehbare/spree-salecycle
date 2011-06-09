@@ -8,12 +8,8 @@
     <%= text_field_tag('preferences[salecycle_client_id]', Spree::Config[:salecycle_client_id]) %>
   </p>
   <p>
-  <label><%= t("user_name_method") %></label>
-    <%= text_field_tag('preferences[salecycle_user_name_method]', Spree::Config[:salecycle_user_name_method]) %>
-  </p>
-  <p>
-    <label><%= t("user_phone_number_method") %></label>
-    <%= text_field_tag('preferences[salecycle_user_phone_number_method]', Spree::Config[:salecycle_user_phone_number_method]) %>
+    <label><%= t("application_name") %></label>
+    <%= text_field_tag('preferences[salecycle_app_name]', Spree::Config[:salecycle_app_name]) %>
   </p>
   <p>
     <label><%= t("user_opt_out_method") %></label>
