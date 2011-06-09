@@ -31,7 +31,7 @@ The Salecycle extension uses hooks defined by Spree to insert the SaleCycle Java
 
 For inquiring minds, here is a list of the hook locations:
 
-+ \*\*/core/app/views/edit.html.erb
++ \*\*/core/app/views/orders/edit.html.erb
 + \*\*/core/app/views/checkout/edit.html.erb
 + \*\*/core/app/views/shared/_order_details.html.erb
 
