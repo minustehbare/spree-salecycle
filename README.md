@@ -18,6 +18,8 @@ Run `bundle install`
 
 And you should be all set.  Finish things up by navigating to the Spree Administration interface, clicking the 'Configuration' tab, selecting 'SaleCycle Settings' from the list, and input your Client ID and application name that were defined/provided from signing up with SaleCycle.
 
+For your unique client ID and contractual details, please contact [spree@salecycle.com(mailto:spree@salecycle.com "spree@salecycle.com")].
+
 Overview
 ========
 
