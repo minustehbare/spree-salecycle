@@ -58,4 +58,6 @@
   __sc["y"]   = "<%= Spree::Config[:salecycle_currency_type] %>";
   __sc["uc"]  = "0";
 <% end %>
-<script type="text/javascript" src="<%= request.protocol %><%= Spree::Config[:salecycle_app_name] %>.salecycle.com/salecycle.js"></script>
+<% if Spree::Config[:salecycle_app_name] %>
+  <script type="text/javascript" src="<%= request.protocol %><%= Spree::Config[:salecycle_app_name] %>.salecycle.com/salecycle.js"></script>
+<% end %>
