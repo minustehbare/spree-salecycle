@@ -1,2 +1,4 @@
 en:
   salecycle_settings_description: Configure SaleCycle settings and define methods for custom variable recording.
+  multi_domain:
+    client_id: "%{name} Client ID"
