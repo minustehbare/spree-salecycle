@@ -3,10 +3,19 @@
 <h1><%= t('edit_salecycle_settings') %></h1>
 
 <%= form_tag(admin_salecycle_settings_path, :method => :put) do %>
-  <p>
-    <label><%= t("client_id") %></label>
-    <%= text_field_tag('preferences[salecycle_client_id]', Spree::Config[:salecycle_client_id]) %>
-  </p>
+  <% if defined? SpreeMultiDomain %>
+    <% Store.all.each do |s| %>
+      <p>
+        <label><%= t('multi_domain.client_id', :name => s.name) %></label>
+        <%= text_field_tag("preferences[salecycle_#{s.code}_client_id]", Spree::Config["salecycle_#{s.code}_client_id".to_sym]) %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>
+      <label><%= t("client_id") %></label>
+      <%= text_field_tag('preferences[salecycle_client_id]', Spree::Config[:salecycle_client_id]) %>
+    </p>
+  <% end %>
   <p>
     <label><%= t("application_name") %></label>
     <%= text_field_tag('preferences[salecycle_app_name]', Spree::Config[:salecycle_app_name]) %>
