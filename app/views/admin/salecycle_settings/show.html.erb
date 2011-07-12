@@ -3,10 +3,19 @@
 <h1><%= t("salecycle_settings") %></h1>
 
 <table>
-  <tr>
-    <th scope="row"><%= t("client_id") %>:</th>
-    <td><%= (Spree::Config[:salecycle_client_id] ? Spree::Config[:salecycle_client_id] : t('not_defined'))%></td>
-  </tr>
+  <% if defined? SpreeMultiDomain %>
+    <% Store.all.each do |s| %>
+      <tr>
+        <th scope="row"><%= t('multi_domain.client_id', :name => s.name) %></th>
+        <td><%= (Spree::Config["salecycle_#{s.code}_client_id".to_sym] ? Spree::Config["salecycle_#{s.code}_client_id".to_sym] : t('not_defined'))%></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <th scope="row"><%= t("client_id") %>:</th>
+      <td><%= (Spree::Config[:salecycle_client_id] ? Spree::Config[:salecycle_client_id] : t('not_defined'))%></td>
+    </tr>
+  <% end %>
   <tr>
     <th scope="row"><%= t('application_name') %>:</th>
     <td><%= (Spree::Config[:salecycle_app_name] ? Spree::Config[:salecycle_app_name] : t('not_defined'))%>
