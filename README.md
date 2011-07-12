@@ -18,7 +18,9 @@ Run `bundle install`
 
 And you should be all set.  Finish things up by navigating to the Spree Administration interface, clicking the 'Configuration' tab, selecting 'SaleCycle Settings' from the list, and input your Client ID and application name that were defined/provided from signing up with SaleCycle.
 
-For your unique client ID and contractual details, please contact spree@salecycle.com.
+If you have a multi-domain store and are using the SpreeMultiDomain extension you will be able to enter a separate Client ID for each of your stores.  This will allow Salecycle to gather cart abandonment and recovery for each of your stores separately.
+
+For your unique Client ID(s) and contractual details, please contact spree@salecycle.com.
 
 Overview
 ========
