@@ -12,24 +12,24 @@ Much more information is available here: http://www.salecycle.com/
 Installation
 ============
 
-Add the following to your Gemfile: `gem 'spree_salecycle', :git => 'git://github.com/minustehbare/spree-salecycle.git'`.
+Add the following to your Gemfile: `gem 'spree_salecycle', :git => 'git://github.com/minustehbare/spree-salecycle.git', :branch => '0-70-x'`.
 
 Run `bundle install`
 
 And you should be all set.  Finish things up by navigating to the Spree Administration interface, clicking the 'Configuration' tab, selecting 'SaleCycle Settings' from the list, and input your Client ID and application name that were defined/provided from signing up with SaleCycle.
 
-For your unique client ID and contractual details, please contact spree@salecycle.com.
+If you have a multi-domain store and are using the SpreeMultiDomain extension you will be able to enter a separate Client ID for each of your stores.  This will allow Salecycle to gather cart abandonment and recovery for each of your stores separately.
+
+For your unique Client ID(s) and contractual details, please contact spree@salecycle.com.
 
 Overview
 ========
 
 ### Hooks ###
 
-The Salecycle extension uses hooks defined by Spree to insert the SaleCycle JavaScript that records user information.  In order to track the user's order before, during, and after checkout the following hooks were used:
+The Salecycle extension uses hooks defined by Spree to insert the SaleCycle JavaScript that records user information.  In order to track the user's order before, during, and after checkout a series of hooks were defined and can be found in the hooks file here: [lib/spree_salecycle_hooks.rb](<https://github.com/minustehbare/spree-salecycle/blob/0-70-x/lib/spree_salecycle_hooks.rb>)
 
-+ `insert_after :outside_cart_form, 'shared/salecycle'`
-+ `insert_after :checkout_summary_box, 'shared/salecycle'`
-+ `insert_after :order_details_total, 'shared/salecycle'`
+
 
 For inquiring minds, here is a list of the hook locations:
 
