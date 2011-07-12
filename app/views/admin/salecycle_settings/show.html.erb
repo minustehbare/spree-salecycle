@@ -38,7 +38,7 @@ Define how to fill in Salecycle's custom variables for additional tracking.
   </tr>
     <tr>
     <th scope="row"><%= t("custom_field_2") %>:</th>
-    <td><%= (Spree::Config[:salecycle_custom_field_1] ? Spree::Config[:salecycle_custom_field_2] : t('none'))%></td>
+    <td><%= (Spree::Config[:salecycle_custom_field_2] ? Spree::Config[:salecycle_custom_field_2] : t('none'))%></td>
   </tr>
 </table>
 <p><%= link_to_with_icon 'edit', t("edit"), edit_admin_salecycle_settings_path, :id => 'admin_general_settings_link' %></p>
