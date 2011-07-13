@@ -17,10 +17,6 @@
     </p>
   <% end %>
   <p>
-    <label><%= t("application_name") %></label>
-    <%= text_field_tag('preferences[salecycle_app_name]', Spree::Config[:salecycle_app_name]) %>
-  </p>
-  <p>
     <label><%= t("user_opt_out_method") %></label>
     <%= text_field_tag('preferences[salecycle_user_opt_out_method]', Spree::Config[:salecycle_user_opt_out_method]) %>
   </p>

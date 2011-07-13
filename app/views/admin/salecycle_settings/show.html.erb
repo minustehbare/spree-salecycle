@@ -17,10 +17,6 @@
     </tr>
   <% end %>
   <tr>
-    <th scope="row"><%= t('application_name') %>:</th>
-    <td><%= (Spree::Config[:salecycle_app_name] ? Spree::Config[:salecycle_app_name] : t('not_defined'))%>
-  </tr>
-  <tr>
     <th scope="row"><%= t("user_opt_out_method") %>:</th>
     <td><%= (Spree::Config[:salecycle_user_opt_out_method] ? Spree::Config[:salecycle_user_opt_out_method] : t('none'))%></td>
   </tr>
