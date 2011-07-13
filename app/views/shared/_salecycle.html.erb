@@ -32,9 +32,9 @@
   __sc["v2"]  = "<%= @order.total %>";
   __sc["q1"]  = "<%= @order.line_items.map { |line_item| line_item.quantity }.join '|' %>";
   __sc["u"]   = "<%= @order.line_items.map { |line_item|
-                                                        if line_item.variant.images.empty?
-                                                          line_item.product.images.first.attachment.url
-                                                        else
+                                                        if line_item.variant.images.any?
+                                                          line_item.variant.images.first.attachment.url
+                                                        elsif line_item.product.images.any?
                                                           line_item.product.images.first.attachment.url
                                                         end
                                           }.join '|' -%>";
