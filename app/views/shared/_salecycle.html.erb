@@ -1,6 +1,10 @@
 <%= javascript_tag do %>
   var __sc = new Array();
-  __sc["c"]   = "<%= Spree::Config[:salecycle_client_id] %>";
+  __sc["c"]   = "<%= if defined? SpreeMultiDomain
+                     Spree::Config["salecycle_#{current_store.code}_client_id".to_sym]
+                   else
+                     Spree::Config[:salecycle_client_id]
+                   end -%>";
   __sc["b"]   = "<%= @order.number %>";
   __sc["s"]   = "<%= case @order.state.to_sym
                        when :cart
