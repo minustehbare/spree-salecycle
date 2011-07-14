@@ -37,9 +37,9 @@
   __sc["q1"]  = "<%= @order.line_items.map { |line_item| line_item.quantity }.join '|' %>";
   __sc["u"]   = "<%= @order.line_items.map { |line_item|
                                                         if line_item.variant.images.any?
-                                                          line_item.variant.images.first.attachment.url
+                                                          line_item.variant.images.first.attachment.url(:small)
                                                         elsif line_item.product.images.any?
-                                                          line_item.product.images.first.attachment.url
+                                                          line_item.product.images.first.attachment.url(:small)
                                                         end
                                           }.join '|' -%>";
   __sc["cu1"] = "<%= if Spree::Config[:salecycle_custom_field_1].present?
