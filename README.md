@@ -39,7 +39,7 @@ For inquiring minds, here is a list of the hook locations:
 
 ### Salecycle Javascript ###
 
-The _salecycle.html.erb partial provides the SaleCycle JavaScript Array of variables and attempts to set them based on the current state of the order and any settings defined through the Spree Administration interface.  It also includes a final JavaScript tag to submit the data to SaleCycle based on the name of your application.
+The _salecycle.html.erb partial provides the SaleCycle JavaScript Array of variables and attempts to set them based on the current state of the order and any settings defined through the Spree Administration interface.  It also includes a final JavaScript tag to submit the data to SaleCycle.
 
 
 ### Configuration Settings ###
@@ -48,7 +48,9 @@ There are a handful of configuration settings that can be set through the Spree 
 
 ##### Mandatory #####
 
-In order for SaleCycle to function correctly, two settings must be defined: `:salecycle_client_id` and `:salecycle_app_name`.  Both of these are defined or provided as a result of signing up with SaleCycle and must be configured before SaleCycle can receive any information being recorded.
+In order for SaleCycle to function correctly, the following setting must be defined: `:salecycle_client_id`.  In the case of a multi-domain store, there will be a separate Client ID for each store.  Data will only be submitted to SaleCycle for a store if the Client ID is configured for that specific store.
+
+The Client ID(s) is defined or provided as a result of signing up with SaleCycle and must be configured before SaleCycle can receive any information being recorded.
 
 ##### Optional #####
 
