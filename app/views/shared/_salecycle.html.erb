@@ -33,7 +33,7 @@
   __sc["p"]   = "<%= @order.line_items.map { |line_item| line_item.id }.join '|' %>";
   __sc["i"]   = "<%= @order.line_items.map { |line_item| line_item.variant.name }.join '|' %>";
   __sc["v1"]  = "<%= @order.line_items.map { |line_item| line_item.price }.join '|' %>";
-  __sc["v2"]  = "<%= @order.total %>";
+  __sc["v2"]  = "<%= @order.item_total %>";
   __sc["q1"]  = "<%= @order.line_items.map { |line_item| line_item.quantity }.join '|' %>";
   __sc["u"]   = "<%= @order.line_items.map { |line_item|
                                                         if line_item.variant.images.any?
