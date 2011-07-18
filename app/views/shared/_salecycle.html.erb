@@ -31,7 +31,7 @@
   __sc["t"]   = "<%= @order.bill_address.phone if @order.bill_address %>";
   __sc["o"]   = "<%= current_user.send Spree::Config[:salecycle_user_opt_out_method].split('#')[1] if current_user and Spree::Config[:salecycle_user_opt_out_method].present? %>";
   __sc["p"]   = "<%= @order.line_items.map { |line_item| line_item.id }.join '|' %>";
-  __sc["i"]   = "<%= @order.line_items.map { |line_item| line_item.variant.name }.join '|' %>";
+  __sc["i"]   = "<%= @order.line_items.map { |line_item| line_item.variant.name.gsub('"', '%22') }.join '|' %>";
   __sc["v1"]  = "<%= @order.line_items.map { |line_item| line_item.price }.join '|' %>";
   __sc["v2"]  = "<%= @order.item_total %>";
   __sc["q1"]  = "<%= @order.line_items.map { |line_item| line_item.quantity }.join '|' %>";
