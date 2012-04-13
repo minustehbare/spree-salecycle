@@ -5,7 +5,7 @@ module Spree
     preference :salecycle_currency_type, :string
     preference :salecycle_custom_field_1, :string
     preference :salecycle_custom_field_2, :string
-    if defined? SpreeMultiDomain
+    if defined? SpreeMultiDomain and Store.table_exists?
       Store.all.each do |s|
         preference "salecycle_#{s.code}_client_id", :string
       end
