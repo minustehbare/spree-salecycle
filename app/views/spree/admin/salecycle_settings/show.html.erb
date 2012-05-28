@@ -4,7 +4,7 @@
 
 <table>
   <% if defined? SpreeMultiDomain %>
-    <% Store.all.each do |s| %>
+    <% Spree::Store.all.each do |s| %>
       <tr>
         <th scope="row"><%= t('multi_domain.client_id', :name => s.name) %></th>
         <td><%= (Spree::Salecycle::Config["salecycle_#{s.code}_client_id".to_sym] ? Spree::Salecycle::Config["salecycle_#{s.code}_client_id".to_sym] : t('not_defined'))%></td>

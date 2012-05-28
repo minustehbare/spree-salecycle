@@ -4,7 +4,7 @@
 
 <%= form_tag(admin_salecycle_settings_path, :method => :put) do %>
   <% if defined? SpreeMultiDomain %>
-    <% Store.all.each do |s| %>
+    <% Spree::Store.all.each do |s| %>
       <p>
         <label><%= t('multi_domain.client_id', :name => s.name) %></label>
         <%= text_field_tag("preferences[salecycle_#{s.code}_client_id]", Spree::Salecycle::Config["salecycle_#{s.code}_client_id".to_sym]) %>
