@@ -1,8 +1,9 @@
 module Spree
   class SalecycleConnection
-    def initialize(order, current_user)
+    def initialize(order, current_user, current_store = nil)
       @order = order
       @current_user = current_user
+      @current_store = current_store
     end
     
     def methods
@@ -10,8 +11,8 @@ module Spree
     end
   
     def c
-      if defined? SpreeMultiDomain
-        Spree::Salecycle::Config["salecycle_#{current_store.code}_client_id".to_sym]
+      if @current_store
+        Spree::Salecycle::Config["salecycle_#{@current_store.code}_client_id".to_sym]
       else
         Spree::Salecycle::Config[:salecycle_client_id]
       end
@@ -57,6 +58,7 @@ module Spree
     end
     
     def o
+      return nil if Spree::Salecycle::Config[:salecycle_user_opt_out_method].blank?
       user_opt_out_method = Spree::Salecycle::Config[:salecycle_user_opt_out_method].split('#')[1] 
       if @current_user && user_opt_out_method.present? && @current_user.respond_to?(user_opt_out_method)
         @current_user.send user_opt_out_method
