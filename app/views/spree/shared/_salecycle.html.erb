@@ -1,0 +1,10 @@
+<%= javascript_tag do %>
+  <% sc = Spree::SalecycleConnection.new(@order, current_user, defined?(current_store) ? current_store : nil) %>
+  var __sc = new Array();
+  <% sc.methods.each do |method| %>
+    <%== %(__sc["#{method}"] = "#{sc.send(method)}";) %>
+  <% end %>
+<% end %>
+<% if (defined? SpreeMultiDomain and Spree::Salecycle::Config["salecycle_#{current_store.code}_client_id".to_sym]) or Spree::Salecycle::Config[:salecycle_client_id] %>
+  <script type="text/javascript" src="<%= request.protocol %>app.salecycle.com/salecycle.js"></script>
+<% end %>

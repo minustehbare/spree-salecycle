@@ -1,0 +1,40 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<h1><%= t("salecycle_settings") %></h1>
+
+<table>
+  <% if defined? SpreeMultiDomain %>
+    <% Spree::Store.all.each do |s| %>
+      <tr>
+        <th scope="row"><%= t('multi_domain.client_id', :name => s.name) %></th>
+        <td><%= (Spree::Salecycle::Config["salecycle_#{s.code}_client_id".to_sym] ? Spree::Salecycle::Config["salecycle_#{s.code}_client_id".to_sym] : t('not_defined'))%></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <th scope="row"><%= t("client_id") %>:</th>
+      <td><%= (Spree::Salecycle::Config[:salecycle_client_id] ? Spree::Salecycle::Config[:salecycle_client_id] : t('not_defined'))%></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th scope="row"><%= t("user_opt_out_method") %>:</th>
+    <td><%= (Spree::Salecycle::Config[:salecycle_user_opt_out_method] ? Spree::Salecycle::Config[:salecycle_user_opt_out_method] : t('none'))%></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("currency_type") %>:</th>
+    <td><%= (Spree::Salecycle::Config[:salecycle_currency_type] ? Spree::Salecycle::Config[:salecycle_currency_type] : t('none'))%></td>
+  </tr>
+</table>
+<h2>Custom fields</h2>
+Define how to fill in Salecycle's custom variables for additional tracking.
+<table>
+  <tr>
+    <th scope="row"><%= t("custom_field_1") %>:</th>
+    <td><%= (Spree::Salecycle::Config[:salecycle_custom_field_1] ? Spree::Salecycle::Config[:salecycle_custom_field_1] : t('none'))%></td>
+  </tr>
+    <tr>
+    <th scope="row"><%= t("custom_field_2") %>:</th>
+    <td><%= (Spree::Salecycle::Config[:salecycle_custom_field_2] ? Spree::Salecycle::Config[:salecycle_custom_field_2] : t('none'))%></td>
+  </tr>
+</table>
+<p><%= link_to_with_icon 'edit', t("edit"), edit_admin_salecycle_settings_path, :id => 'admin_general_settings_link' %></p>
